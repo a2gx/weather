@@ -1,5 +1,10 @@
 env: default
 
+logger:
+  level: debug
+  format: json
+  add_source: false
+
 http:
   host: "localhost"
   port: 3000

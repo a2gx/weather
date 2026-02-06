@@ -15,17 +15,25 @@ import (
 type Config struct {
 	Env string `koanf:"env"`
 
+	Logger LoggerConfig `koanf:"logger"`
+
 	Http struct {
 		Host string `koanf:"host"`
 		Port int    `koanf:"port"`
 	} `koanf:"http"`
 }
 
+type LoggerConfig struct {
+	Level     string `koanf:"level"`      // debug|info|warn|error
+	Format    string `koanf:"format"`     // json|text
+	AddSource bool   `koanf:"add_source"` // show file:line
+}
+
 const (
 	EnvMode   = "ENV_MODE"
 	EnvPrefix = "APP_" // префикс env overrides, напр. APP_HTTP__ADDR=":8080"
 
-	defaultConfigDir  = "config/"
+	defaultConfigDir  = "config"
 	defaultConfigFile = "default"
 )
 
